@@ -163,4 +163,20 @@ h3 {
     font-size: larger;
 }
 
+table#time_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#time_list .time_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#time_list .time_date {
+    width: 20%;
+}
+
+table#time_list .time_action {
+    width: 20%;
+}
 

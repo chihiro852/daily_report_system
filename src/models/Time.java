@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -35,6 +36,9 @@ public class Time {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
+    @Column(name = "time_date", nullable = false)
+    private Date time_date;
+
     @Column(name = "clock_in", nullable = false)
     private Timestamp clock_in;
 
@@ -62,6 +66,15 @@ public class Time {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
+    public Date getTime_date() {
+        return time_date;
+    }
+
+    public void setTime_date(Date time_date) {
+        this.time_date = time_date;
+    }
+
 
     public Timestamp getClock_in() {
         return clock_in;

@@ -5,26 +5,9 @@
     <c:param name="content">
         <h2>出退勤　登録ページ</h2>
 
-                <c:if test="${_token == clock_in}">
+                <c:if test="${clock_in == null}">
                     <form method="POST" action="<c:url value='/times/create' />">
                         <button type="submit">出勤</button>
-                    </form>
-                </c:if>
-                <c:if test="${_token == break_start}">
-                    <form method="POST" action="<c:url value='/times/create' />">
-                        <button type="submit">休憩開始</button>
-                    </form>
-                </c:if>
-
-                <c:if test="${_token == break_end}">
-                    <form method="POST" action="<c:url value='/times/create' />">
-                        <button type="submit">休憩終了</button>
-                    </form>
-                </c:if>
-
-                <c:if test="${_token == clock_out}">
-                    <form method="POST" action="<c:url value='/times/create' />">
-                        <button type="submit">退勤</button>
                     </form>
                 </c:if>
 

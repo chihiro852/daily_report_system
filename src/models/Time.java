@@ -42,13 +42,13 @@ public class Time {
     @Column(name = "clock_in", nullable = false)
     private Timestamp clock_in;
 
-    @Column(name = "break_start", nullable = false)
+    @Column(name = "break_start", nullable = true)
     private Timestamp break_start;
 
-    @Column(name = "break_end", nullable = false)
+    @Column(name = "break_end", nullable = true)
     private Timestamp break_end;
 
-    @Column(name = "clock_out", nullable = false)
+    @Column(name = "clock_out", nullable = true)
     private Timestamp clock_out;
 
     public Integer getId() {

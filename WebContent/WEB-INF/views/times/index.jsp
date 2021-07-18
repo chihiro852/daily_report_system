@@ -20,7 +20,7 @@
                     <tr class="row${status.count % 2}">
                         <td class="time_name"><c:out value="${time.employee.name}" /></td>
                         <td class="time_date"><fmt:formatDate value='${time.time_date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="time_action"><a href="<c:url value='/times/show?id=${time.id}' />">詳細を見る</a></td>
+                        <td class="time_action"><a href="<c:url value='/times/show?id=${time.id}' />">打刻と詳細</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

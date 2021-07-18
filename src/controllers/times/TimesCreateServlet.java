@@ -40,23 +40,14 @@ public class TimesCreateServlet extends HttpServlet {
             t.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
 
             Date time_date = new Date(System.currentTimeMillis());
-            String rd_str = request.getParameter("time_date");
-            if(rd_str != null && !rd_str.equals("")) {
-                time_date = Date.valueOf(request.getParameter("time_date"));
-            }
             t.setTime_date(time_date);
 
-            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            t.setClock_in(currentTime);
-            t.setBreak_start(currentTime);
-            t.setBreak_end(currentTime);
-            t.setClock_out(currentTime);
-
+            t.setClock_in(new Timestamp(System.currentTimeMillis()));
 
             em.getTransaction().begin();
             em.persist(t);
             em.getTransaction().commit();
-            request.getSession().setAttribute("flush", "打刻が完了しました。");
+            request.getSession().setAttribute("flush", "出勤しました。");
             em.close();
 
             response.sendRedirect(request.getContextPath() + "/times/index");

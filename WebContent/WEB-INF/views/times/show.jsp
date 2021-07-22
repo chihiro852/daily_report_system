@@ -8,7 +8,7 @@
                 <h2>出退勤　詳細ページ</h2>
 
                 <c:choose>
-                    <c:when test="${time.break_start == null}">
+                    <c:when test="${time.break_start == null && time.clock_out == null}">
                         <form method="POST" action="<c:url value='/times/breakstart' />">
                             <button type="submit">休憩開始</button>
                         </form>

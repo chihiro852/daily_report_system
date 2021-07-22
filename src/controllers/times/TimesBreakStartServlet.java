@@ -1,7 +1,6 @@
 package controllers.times;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.EntityManager;
@@ -11,21 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Employee;
 import models.Time;
 import utils.DBUtil;
 
 /**
  * Servlet implementation class TimesCreateServlet
  */
-@WebServlet("/times/create")
-public class TimesCreateServlet extends HttpServlet {
+@WebServlet("/times/breakstart")
+public class TimesBreakStartServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TimesCreateServlet() {
+    public TimesBreakStartServlet() {
         super();
     }
 
@@ -33,23 +31,20 @@ public class TimesCreateServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
             EntityManager em = DBUtil.createEntityManager();
 
-            Time t = new Time();
+            Time t = em.find(Time.class, (Integer)(request.getSession().getAttribute("time_id")));
 
-            t.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
-
-            Date time_date = new Date(System.currentTimeMillis());
-            t.setTime_date(time_date);
-
-            Timestamp clock_in = new Timestamp(System.currentTimeMillis());
-            t.setClock_in(clock_in);
+            Timestamp break_start = new Timestamp(System.currentTimeMillis());
+            t.setBreak_start(break_start);
 
             em.getTransaction().begin();
-            em.persist(t);
             em.getTransaction().commit();
-            request.getSession().setAttribute("flush", "出勤しました。");
+            request.getSession().setAttribute("flush", "休憩開始しました。");
             em.close();
+
+            request.getSession().removeAttribute("time_id");
 
             response.sendRedirect(request.getContextPath() + "/times/index");
 

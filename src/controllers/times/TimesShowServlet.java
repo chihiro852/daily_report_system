@@ -37,6 +37,8 @@ public class TimesShowServlet extends HttpServlet {
 
         request.setAttribute("time", t);
 
+        request.getSession().setAttribute("time_id", t.getId());
+
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/times/show.jsp");
         rd.forward(request, response);
     }

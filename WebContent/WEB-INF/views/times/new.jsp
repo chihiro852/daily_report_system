@@ -5,11 +5,11 @@
     <c:param name="content">
         <h2>出退勤　登録ページ</h2>
 
-                <c:if test="${clock_in == null}">
+<!--                 <c:if test="${clock_in == null}"> -->
                     <form method="POST" action="<c:url value='/times/create' />">
                         <button type="submit">出勤</button>
                     </form>
-                </c:if>
+<!--                 </c:if> -->
 
         <p><a href="<c:url value='/times/index' />">一覧に戻る</a></p>
     </c:param>

@@ -108,4 +108,9 @@ public class Time {
         this.clock_out = clock_out;
     }
 
+    public void setCurrentTime(String string) {
+        // TODO 自動生成されたメソッド・スタブ
+
+    }
+
 }
